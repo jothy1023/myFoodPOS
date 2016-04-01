@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%
 	String path = request.getContextPath();
@@ -11,6 +11,7 @@
 <html>
 <head>
 <base href="<%=basePath%>">
+
 <title>查询产品</title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -30,30 +31,34 @@
 <link rel="stylesheet" type="text/css" href="type/css/manageProduct.css">
 <script type="text/javascript" src="type/js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="type/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
-		<div id="searchType" class="tab-pane fade in active">
-			<form role="form">
-				<form role="form">
-					<!-- <div class="form-group">
-						<label for="searchTypeId">请输入产品类别编号</label> <input type="text"
-							id="searchTypeId" name="searchTypeId" class="form-control"
-							placeholder="请输入数字编号" />
-					</div> -->
-					<div class="form-group"><%-- 
-						<s:set name="type" value="#session.type" /> --%>
-						<p>产品如下：<br /></p>
-						<label>产品类别编号:  <s:property value="tid" /></label><br />
-						<label>产品类别名称:  <s:property value="tname" /></label>
-					</div><!-- 
-					<button type="submit" class="btn btn-default">查询</button> -->
-				</form>
-		</div>
-</body>
+
+	<div id="updateType" class="tab-pane fade in active">
+		<form role="form" name="updateForm"
+			action="<%=path%>/type/updateType.action" method="post">
+			<div>
+				<label>请选择要修改的类型编号：</label> <select class="form-control" name="tid">
+					<s:iterator value="#session.types" var="type">
+						<option name="tid" tname='<s:property value="#type.tname"/>'><s:property value="#type.tid"/></option>
+					</s:iterator>
+				</select>
+			</div>
+			<div>
+				<label for="updateTypeName">请输入名称:</label> <input name="tname"
+					type="text" id="updateTypeName" class="form-control" />
+			</div>
+			<button type="submit" class="btn btn-default">修改</button>
+		</form>
+	</div>
 	<script>
-		(function(){
-			alert("操作成功!");
-		})();
+		var select = $('select');
+		var inputName = $('#updateTypeName');
+		select.change(function() {
+			inputName.attr('value', $(this).find("option:selected").attr('tname'));
+		});
 	</script>
+</body>
 </html>

@@ -33,27 +33,26 @@
 </head>
 
 <body>
-		<div id="searchType" class="tab-pane fade in active">
-			<form role="form">
-				<form role="form">
-					<!-- <div class="form-group">
-						<label for="searchTypeId">请输入产品类别编号</label> <input type="text"
-							id="searchTypeId" name="searchTypeId" class="form-control"
-							placeholder="请输入数字编号" />
-					</div> -->
-					<div class="form-group"><%-- 
-						<s:set name="type" value="#session.type" /> --%>
-						<p>产品如下：<br /></p>
-						<label>产品类别编号:  <s:property value="tid" /></label><br />
-						<label>产品类别名称:  <s:property value="tname" /></label>
-					</div><!-- 
-					<button type="submit" class="btn btn-default">查询</button> -->
-				</form>
-		</div>
-</body>
+	<div id="createType" class="tab-pane fade in active">
+		<form role="form" name="createForm"
+			action="<%=path%>/type/createType.action" method="post">
+			<!-- <div class="form-group">
+				<label for="inputTypeId">产品类别编号</label> <input type="text"
+					id="inputTypeId" name="inputTypeId" class="form-control"
+					placeholder="请输入数字编号" />
+			</div> -->
+			<div class="form-group">
+				<label for="inputTypeName">产品类别名称</label> <input type="text"
+					id="inputTypeName" name="tname" class="form-control"
+					placeholder="名称" />
+			</div>
+			<button type="submit" name="submit" class="btn btn-default">添加</button>
+		</form>
+	</div>
 	<script>
-		(function(){
-			alert("操作成功!");
-		})();
+		$('button').click(function(){
+			$('iframe', parent.document).attr('src', 'type_detail.jsp');
+		});
 	</script>
+</body>
 </html>

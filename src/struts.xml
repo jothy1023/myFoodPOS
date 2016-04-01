@@ -21,13 +21,23 @@
 	<package name="type" namespace="/type" extends="default">
 		<action name="createType" class="action.TypeAction" method="createType">
 			<!-- 配置视图页面 -->
-			<result name="type_detail">/type/type_detail.jsp</result>
-			<result name="type_main">/type/type_main.jsp</result>
+			<result name="create_success">/type/type_detail.jsp</result>
+			<result name="create_fail">/type/index.jsp</result>
 		</action>
 		<action name="updateType" class="action.TypeAction" method="updateType">
 			<!-- 配置视图页面 -->
-			<result name="type_detail">/type/type_detail.jsp</result>
-			<result name="type_main">/type/type_main.jsp</result>
+			<result name="update_success">/type/type_detail.jsp</result>
+			<result name="update_fail">/type/index.jsp</result>
+		</action>
+		<action name="getTypeById" class="action.TypeAction" method="getTypeById">
+			<!-- 配置视图页面 -->
+			<result name="get_success">/type/update_type.jsp</result>
+			<result name="get_fail">/type/index.jsp</result>
+		</action>
+		<action name="getAllTypes" class="action.TypeAction" method="getAllTypes">
+			<!-- 配置视图页面 -->
+			<result name="get_success">/type/update_type.jsp</result>
+			<result name="get_fail">/type/index.jsp</result>
 		</action>
 	</package>
 

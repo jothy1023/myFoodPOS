@@ -1,5 +1,7 @@
 package action;
 
+import java.io.Console;
+
 import service.TypeService;
 import service.impl.TypeServiceImpl;
 import com.opensymphony.xwork2.ModelDriven;
@@ -18,9 +20,10 @@ public class TypeAction extends SuperAction implements ModelDriven<Type> {
 	// 新增产品，由service调用方法完成
 	public String createType() throws Exception {
 		if (typeService.createType(type)) {
-			return "type_detail";
+			session.setAttribute("type", type);
+			return "create_success";
 		} else {
-			return "type_main";
+			return "create_fail";
 		}
 	}
 
@@ -29,12 +32,33 @@ public class TypeAction extends SuperAction implements ModelDriven<Type> {
 		int tid = type.getTid();
 		String tname = type.getTname();
 		if (typeService.updateType(tid, tname)) {
-			return "type_detail";
+			return "update_success";
 		} else {
-			return "type_main";
+			return "update_fail";
 		}
 	}
 
+	// 获取所有产品类别
+	public String getAllTypes() throws Exception {
+		Type[] types = typeService.getAllTypes();
+		if (types != null) {
+			session.setAttribute("types", types);
+			return "get_success";
+		} else {
+			return "get_fail";
+		}
+	}
+	
+	// 获取指定产品类别
+	public String getTypeById() throws Exception {
+		int tid = type.getTid();
+		if (typeService.getTypeById(tid) != null) {
+			return "get_success";
+		} else {
+			return "get_fail";
+		}
+	}
+	
 	@Override
 	public Type getModel() {
 		return this.type;

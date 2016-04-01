@@ -27,4 +27,14 @@ public class TypeServiceImpl implements TypeService {
 		return this.typedao.updateType(tid, tname);
 	}
 
+	@Override
+	public Type[] getAllTypes() {
+		return this.typedao.getAllTypes();
+	}
+
+	@Override
+	public Type getTypeById(int tid) {
+		return this.typedao.getTypeByTid(tid);
+	}
+
 }

@@ -137,7 +137,7 @@ public class TypeDAOImpl implements TypeDAO {
 		}
 	}
 
-	public Type[] getTypeAll() {
+	public Type[] getAllTypes() {
 		try {
 			Session session = MyHibernateSessionFactory.getSessionFactory()
 					.getCurrentSession();

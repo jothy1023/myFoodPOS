@@ -2,5 +2,5 @@
 <%
   String path = request.getContextPath();
   String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-  response.sendRedirect(path+"/type/create_type.jsp");
+  response.sendRedirect(path+"/type/index.jsp");
 %>
