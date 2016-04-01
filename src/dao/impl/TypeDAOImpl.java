@@ -1,4 +1,4 @@
-package services.impl;
+package dao.impl;
 
 import java.util.List;
 import java.util.Scanner;
@@ -6,23 +6,24 @@ import java.util.Scanner;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import db.MyHibernateSessionFactory;
-import entity.Food;
-import service.FoodDAO;
 
-public class FoodDAOImpl implements FoodDAO {
+import dao.TypeDAO;
+import db.MyHibernateSessionFactory;
+import entity.Type;
+
+public class TypeDAOImpl implements TypeDAO {
 
 	private Transaction tx = null;
 	private String hql = "";
 	@Override
-	public boolean createFood(Food food) {
+	public boolean createType(Type type) {
 		try {
 			Session session = MyHibernateSessionFactory.getSessionFactory()
 					.getCurrentSession();
 			// 开始事务
 			tx = session.beginTransaction();
-			session.save(food);
-			System.out.println("新增Food："+food.getFname()+"成功! 编号："+food.getFid());
+			session.save(type);
+			System.out.println("新增Type："+type.getTname()+"成功! 编号："+type.getTid());
 			// 事务要在返回之前commit
 			tx.commit();
 			return true;
@@ -37,22 +38,20 @@ public class FoodDAOImpl implements FoodDAO {
 	}
 
 	@Override
-	public Food getFoodByFid(int fid) {
+	public Type getTypeByTid(int tid) {
 		try {
 			Session session = MyHibernateSessionFactory.getSessionFactory()
 					.getCurrentSession();
 			// 开始事务
 			tx = session.beginTransaction();
-			hql = "from Food where fid=" + fid;
-			Food food = (Food)session.createQuery(hql).uniqueResult();
-			// 提交事务（返回之前提交）
-			tx.commit();
+			hql = "from Type where tid=" + tid;
+			Type type = (Type)session.createQuery(hql).uniqueResult();
 			// 判断是否查到food
-			if (food != null) {
-				System.out.println("查到Food：("+food.getFid()+") "+food.getFname());
-				return food;
+			if (type != null) {
+				System.out.println("查到Type：("+type.getTid()+") "+type.getTname());
+				return type;
 			} else {
-				System.out.println("查不到该Food！");
+				System.out.println("查不到该Type！");
 				return null;
 			}
 		} catch (Exception e) {
@@ -66,17 +65,17 @@ public class FoodDAOImpl implements FoodDAO {
 	}
 
 	@Override
-	public boolean updateFood(int fid, String fname) {
+	public boolean updateType(int tid, String tname) {
 		try {
 			Session session = MyHibernateSessionFactory.getSessionFactory()
 					.getCurrentSession();
 			// 开始事务
 			tx = session.beginTransaction();
-			Food food = (Food)session.get(Food.class, fid);
-			String oldFName = food.getFname();
-			food.setFname(fname);
-			session.update(food);
-			System.out.println("修改Food Name："+oldFName+"为"+food.getFname()+"成功");
+			Type type = (Type)session.get(Type.class, tid);
+			String oldFName = type.getTname();
+			type.setTname(tname);
+			session.update(type);
+			System.out.println("修改Type Name："+oldFName+"为"+type.getTname()+"成功");
 			// 事务要在返回之前commit
 			tx.commit();
 			return true;
@@ -91,24 +90,22 @@ public class FoodDAOImpl implements FoodDAO {
 	}
 
 	@Override
-	public boolean deleteFood(int fid) {
+	public boolean deleteType(int tid) {
 		try {
 			Session session = MyHibernateSessionFactory.getSessionFactory()
 					.getCurrentSession();
 			// 开始事务
 			tx = session.beginTransaction();
-			Food food = (Food)session.get(Food.class, fid);
+			Type type = (Type)session.get(Type.class, tid);
 			Scanner input = new Scanner(System.in);
-			System.out.println("您确定要删除Food："+food.getFname()+" 吗?(y/n)");
+			System.out.println("您确定要删除Type："+type.getTname()+" 吗?(y/n)");
 			String confirm = input.next();
 			if(confirm.equals("y")){
-				session.delete(food);
-				System.out.println("删除Food：("+food.getFid()+") "+food.getFname()+"成功");
+				session.delete(type);
+				System.out.println("删除Type：("+type.getTid()+") "+type.getTname()+"成功");
 			}else {
 				System.out.println("撤销删除操作！");
 			}
-			// 事务要在返回之前commit
-			tx.commit();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -120,18 +117,15 @@ public class FoodDAOImpl implements FoodDAO {
 		}
 	}
 
-	@Override
-	public int getMaxFid() {
+	public int getMaxTid() {
 		try {
 			Session session = MyHibernateSessionFactory.getSessionFactory()
 					.getCurrentSession();
 			// 开始事务
 			tx = session.beginTransaction();
 			// f为别名
-			hql = "select max(f.fid) from Food f";
+			hql = "select max(t.tid) from Type t";
 			Integer maxFid = (Integer)session.createQuery(hql).uniqueResult();
-			// 事务要在返回之前commit
-			tx.commit();
 			return maxFid;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -143,30 +137,27 @@ public class FoodDAOImpl implements FoodDAO {
 		}
 	}
 
-	@Override
-	public Food[] getFoodAll() {
+	public Type[] getTypeAll() {
 		try {
 			Session session = MyHibernateSessionFactory.getSessionFactory()
 					.getCurrentSession();
 			// 开始事务
 			tx = session.beginTransaction();
-			hql = "from Food where 1=1";
+			hql = "from Type where 1=1";
 			Query query = session.createQuery(hql);
 			List list = query.list();
 			int listSize = list.size();
-			// 提交事务（返回之前提交）
-			tx.commit();
 			// 判断是否查到food
 			if (listSize > 0) {
-				System.out.println("查到food：");
-				Food[] foods = new Food[listSize];
+				System.out.println("查到type：");
+				Type[] types = new Type[listSize];
 				for(int i = 0; i < listSize; i++){
-					foods[i] = (Food)list.get(i);
-					System.out.println("("+foods[i].getFid()+") "+foods[i].getFname());
+					types[i] = (Type)list.get(i);
+					System.out.println("("+types[i].getTid()+") "+types[i].getTname());
 				}
-				return foods;
+				return types;
 			} else {
-				System.out.println("暂无Food！");
+				System.out.println("暂无Type！");
 				return null;
 			}
 		} catch (Exception e) {

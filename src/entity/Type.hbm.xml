@@ -6,12 +6,12 @@
 <!-- 实体映射文件 -->
 <hibernate-mapping>
 	<!-- 动态局部更新 -->
-   <class name="entity.Food" table="FOOD" dynamic-update="true">
+   <class name="entity.Type" table="TYPE" dynamic-update="true">
       <!-- 主键 -->
-      <id name="fid" type="int">
+      <id name="tid" type="int">
       	<!--自动增长类型-->
          <generator class="native" />
       </id>
-      <property name="fname" type="java.lang.String" />
+      <property name="tname" type="java.lang.String" />
    </class>
 </hibernate-mapping>
