@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.4.dtd">
+
+<struts>
+
+	<package name="default" namespace="/" extends="struts-default">
+
+	</package>
+
+
+	<!-- <package name="users" namespace="/users" extends="default">
+		<action name="*_*" class="action.{1}Action" method="{2}">
+			配置视图页面
+			<result name="login_success">/users/Users_login_success.jsp</result>
+			<result name="login_failure">/users/Users_login.jsp</result>
+		</action>
+	</package> -->
+	
+	<package name="type" namespace="/type" extends="default">
+		<action name="createType" class="action.TypeAction" method="createType">
+			<!-- 配置视图页面 -->
+			<result name="create_success">/type/type_detail.jsp</result>
+			<result name="create_fail">/type/index.jsp</result>
+		</action>
+		<action name="updateType" class="action.TypeAction" method="updateType">
+			<!-- 配置视图页面 -->
+			<result name="update_success">/type/type_detail.jsp</result>
+			<result name="update_fail">/type/index.jsp</result>
+		</action>
+		<action name="getTypeById" class="action.TypeAction" method="getTypeById">
+			<!-- 配置视图页面 -->
+			<result name="get_success">/type/update_type.jsp</result>
+			<result name="get_fail">/type/index.jsp</result>
+		</action>
+		<action name="getAllTypes" class="action.TypeAction" method="getAllTypes">
+			<!-- 配置视图页面 -->
+			<result name="get_success">/type/update_type.jsp</result>
+			<result name="get_fail">/type/index.jsp</result>
+		</action>
+	</package>
+
+</struts>

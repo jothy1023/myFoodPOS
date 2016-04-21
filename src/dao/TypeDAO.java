@@ -15,4 +15,5 @@ public interface TypeDAO {
 	public boolean deleteType(int tid);
 	
 	public int getMaxTid();
+	public void getTypeAll();
 }

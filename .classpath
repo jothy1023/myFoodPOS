@@ -4,9 +4,12 @@
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Hibernate4.3.11-core"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/junit"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/mysqlJDBC"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Struts-core"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Hibernate4.3.11-core"/>
+	<classpathentry kind="lib" path="C:/apache-tomcat-7.0.54-windows-x86/apache-tomcat-7.0.54/lib/jsp-api.jar"/>
+	<classpathentry kind="lib" path="C:/apache-tomcat-7.0.54-windows-x86/apache-tomcat-7.0.54/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

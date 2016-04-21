@@ -170,4 +170,10 @@ public class TypeDAOImpl implements TypeDAO {
 		}
 	}
 
+	@Override
+	public void getTypeAll() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
