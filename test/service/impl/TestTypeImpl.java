@@ -27,7 +27,7 @@ public class TestTypeImpl {
 				break;
 			}
 			case 1: {
-				tp.getTypeAll();
+				tp.getAllTypes();
 				break;
 			}
 			case 2: {
@@ -55,7 +55,7 @@ public class TestTypeImpl {
 			case 5: {
 				System.out.println("请输入要删除的food id:");
 				int fid = input.nextInt();
-				Assert.assertEquals(true, tp.deleteType(fid));
+				Assert.assertEquals(true, tp.deleteTypeById(fid));
 				break;
 			}
 			default:{

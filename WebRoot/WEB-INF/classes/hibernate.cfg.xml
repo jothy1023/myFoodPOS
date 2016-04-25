@@ -18,9 +18,11 @@
 		<!--使用getCurrentSession方式打开会话-->
 		<property name="hibernate.current_session_context_class">thread</property>
 		
-		<!-- 添加实体映射文件到配置文档
-		<mapping resource="entity/Students.hbm.xml" />
-		<mapping resource="entity/Users.hbm.xml" /> -->
+		<!-- 添加实体映射文件到配置文档 -->
+		<mapping resource="entity/Sale.hbm.xml" />
+		<mapping resource="entity/Orders.hbm.xml" />
+		<mapping resource="entity/Orderitem.hbm.xml" />
+		<mapping resource="entity/User.hbm.xml" />
 		<mapping resource="entity/Product.hbm.xml" />
 		<mapping resource="entity/Type.hbm.xml" />
 	</session-factory>

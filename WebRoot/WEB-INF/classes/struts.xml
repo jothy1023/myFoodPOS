@@ -35,6 +35,15 @@
 			<result name="success">/type/type_detail.jsp</result>
 			<result name="fail">/error.jsp</result>
 		</action>
+		
+		<action name="addToCart" class="shoppingAction" method="addToCart">
+			<result name="success">/addToCart_success.jsp</result>
+		</action>
+		
+		<action name="checkout" class="shoppingAction" method="checkout">
+			<result name="success">/system/checkout_success.jsp</result>
+			<result name="error">/system/index.jsp</result>
+		</action>
 	</package>
 	
 	<package name="product" namespace="/product" extends="default">

@@ -5,26 +5,28 @@ import java.util.Iterator;
 import java.util.Map;
 
 import service.IOrderService;
+import service.ProductService;
 import service.impl.OrderServiceImpl;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import dao.IOrderDAO;
-
 import entity.Cart;
 import entity.Orderitem;
 import entity.Orders;
+import entity.Product;
+import entity.User;
 
 public class ShoppingAction extends ActionSupport{
 	private int quantity;
 	private Integer productId;
-	private ProductSerivce productSerivce;
+	private ProductService productSerivce;
 	private IOrderService orderService;
 	
 	//添加到列表
 	public String addToCart() throws Exception{
-		Product product = productSerivce.getProductByID(productId);
+		Product product = productSerivce.deleteProductById(productId);
 		Orderitem orderItem = new Orderitem();
 		orderItem.setProduct(product);
 		orderItem.setQuantity(quantity);
@@ -52,11 +54,12 @@ public class ShoppingAction extends ActionSupport{
 		Map session = ActionContext.getContext().getSession();
 		User user = (User)session.get("user");
 		Cart cart = (Cart)session.get("cart");
+		int userId = user.getUserid();
 		if(user == null || cart == null)
 			return ActionSupport.ERROR;
 		Orders order = new Orders();
 		order.setOrderDate(new Date());
-		order.setUser(user);
+		order.setUserId(userId);
 		for(Iterator it = cart.getItems().values().iterator();it.hasNext();){
 			Orderitem orderitem = (Orderitem)it.next();
 			orderitem.setOrders(order);
