@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- 实体映射文件 -->
+<hibernate-mapping>
+	<!-- 动态局部更新 -->
+   <class name="entity.Product" table="PRODUCT" dynamic-update="true">
+      <!-- 主键 -->
+      <id name="pid" type="int">
+      	<!--自动增长类型-->
+         <generator class="native" />
+      </id>
+      <property name="pname" type="java.lang.String" />
+      <property name="price" type="java.lang.Integer" />
+      <property name="psize" type="java.lang.Integer" />
+      <many-to-one name="type" column="tid" class="entity.Type" /><!-- name对应本类的属性名，column标明映射到本表的字段名,class标明映射到本表的实体类 -->
+   </class>
+</hibernate-mapping>

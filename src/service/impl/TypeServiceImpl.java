@@ -37,4 +37,9 @@ public class TypeServiceImpl implements TypeService {
 		return this.typedao.getTypeByTid(tid);
 	}
 
+	@Override
+	public Type deleteTypeById(int tid) {
+		return this.typedao.deleteTypeById(tid);
+	}
+
 }

@@ -26,10 +26,10 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" type="text/css" href="type/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="type/css/manageProduct.css">
-<script type="text/javascript" src="type/js/jquery-2.1.3.min.js"></script>
-<script type="text/javascript" src="type/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/manageProduct.css">
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -43,7 +43,7 @@
 					</div> -->
 					<div class="form-group"><%-- 
 						<s:set name="type" value="#session.type" /> --%>
-						<p>产品如下：<br /></p>
+						<p>修改/删除产品如下：<br /></p>
 						<label>产品类别编号:  <s:property value="tid" /></label><br />
 						<label>产品类别名称:  <s:property value="tname" /></label>
 					</div><!-- 
@@ -54,6 +54,8 @@
 	<script>
 		(function(){
 			alert("操作成功!");
+			// 重新加载type列表
+			$('.typelist_iframe', parent.document).attr('src', 'type/getAllTypes.action');
 		})();
 	</script>
 </html>

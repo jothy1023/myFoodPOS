@@ -26,10 +26,10 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" type="text/css" href="type/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="type/css/manageProduct.css">
-<script type="text/javascript" src="type/js/jquery-2.1.3.min.js"></script>
-<script type="text/javascript" src="type/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/manageProduct.css">
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -51,7 +51,7 @@
 	</div>
 	<script>
 		$('button').click(function(){
-			$('iframe', parent.document).attr('src', 'type_detail.jsp');
+			$('.type_iframe', parent.document).attr('src', 'type/type_detail.jsp');
 		});
 	</script>
 </body>

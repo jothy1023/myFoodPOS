@@ -12,8 +12,7 @@ public interface TypeDAO {
 	public Type getTypeByTid(int tid);
 	public Type[] getAllTypes();
 	public boolean updateType(int tid, String tname);
-	public boolean deleteType(int tid);
+	public Type deleteTypeById(int tid);
 	
 	public int getMaxTid();
-	public void getTypeAll();
 }

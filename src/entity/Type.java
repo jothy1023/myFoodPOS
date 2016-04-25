@@ -1,10 +1,13 @@
 package entity;
 
+import java.util.List;
+
 // 产品类别
 public class Type {
 
 	private int tid;
 	private String tname;
+	private List<Product> products;
 	
 	public Type(){
 		
@@ -34,5 +37,17 @@ public class Type {
 		this.tname = tname;
 	}
 	
+	public int addProduct(Product product) {
+		products.add(product);
+		return products.size();
+	}
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
 	
 }

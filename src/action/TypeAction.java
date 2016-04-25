@@ -19,11 +19,11 @@ public class TypeAction extends SuperAction implements ModelDriven<Type> {
 
 	// 新增产品，由service调用方法完成
 	public String createType() throws Exception {
-		if (typeService.createType(type)){
+		if (typeService.createType(type)) {
 			session.setAttribute("type", type);
-			return "create_success";
+			return "success";
 		} else {
-			return "create_fail";
+			return "fail";
 		}
 	}
 
@@ -32,9 +32,9 @@ public class TypeAction extends SuperAction implements ModelDriven<Type> {
 		int tid = type.getTid();
 		String tname = type.getTname();
 		if (typeService.updateType(tid, tname)) {
-			return "update_success";
+			return "success";
 		} else {
-			return "update_fail";
+			return "fail";
 		}
 	}
 
@@ -43,9 +43,9 @@ public class TypeAction extends SuperAction implements ModelDriven<Type> {
 		Type[] types = typeService.getAllTypes();
 		if (types != null) {
 			session.setAttribute("types", types);
-			return "get_success";
+			return "success";
 		} else {
-			return "get_fail";
+			return "fail";
 		}
 	}
 	
@@ -53,9 +53,19 @@ public class TypeAction extends SuperAction implements ModelDriven<Type> {
 	public String getTypeById() throws Exception {
 		int tid = type.getTid();
 		if (typeService.getTypeById(tid) != null) {
-			return "get_success";
+			return "success";
 		} else {
-			return "get_fail";
+			return "fail";
+		}
+	}
+	
+	// 删除指定产品类别
+	public String deleteTypeById() throws Exception {
+		int tid = type.getTid();
+		if (typeService.deleteTypeById(tid) != null) {
+			return "success";
+		} else {
+			return "fail";
 		}
 	}
 	

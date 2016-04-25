@@ -13,5 +13,10 @@
          <generator class="native" />
       </id>
       <property name="tname" type="java.lang.String" />
+      <list name="products">
+      	<key column="tid" /><!-- 指明表中外键 -->
+      	<list-index></list-index>
+      	<one-to-many class="entity.Product" /><!-- 指明映射类 -->
+      </list>
    </class>
 </hibernate-mapping>

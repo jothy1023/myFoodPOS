@@ -7,4 +7,5 @@ public interface TypeService {
 	public boolean updateType(int tid, String tname);
 	public Type[] getAllTypes(); 
 	public Type getTypeById(int tid);
+	public Type deleteTypeById(int tid);
 }

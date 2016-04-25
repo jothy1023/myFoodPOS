@@ -8,18 +8,60 @@
 	<package name="default" namespace="/" extends="struts-default">
 
 	</package>
-
 	
 	<package name="type" namespace="/type" extends="default">
 		<action name="createType" class="action.TypeAction" method="createType">
 			<!-- 配置视图页面 -->
-			<result name="type_detail">/type/type_detail.jsp</result>
-			<result name="type_main">/type/type_main.jsp</result>
+			<result name="success">/type/type_detail.jsp</result>
+			<result name="fail">/error.jsp</result>
 		</action>
 		<action name="updateType" class="action.TypeAction" method="updateType">
 			<!-- 配置视图页面 -->
-			<result name="type_detail">/type/type_detail.jsp</result>
-			<result name="type_main">/type/type_main.jsp</result>
+			<result name="success">/type/type_detail.jsp</result>
+			<result name="fail">/error.jsp</result>
+		</action>
+		<action name="getTypeById" class="action.TypeAction" method="getTypeById">
+			<!-- 配置视图页面 -->
+			<result name="success">/type/update_type.jsp</result>
+			<result name="fail">/error.jsp</result>
+		</action>
+		<action name="getAllTypes" class="action.TypeAction" method="getAllTypes">
+			<!-- 配置视图页面 -->
+			<result name="success">/type/type_list.jsp</result>
+			<result name="fail">/error.jsp</result>
+		</action>
+		<action name="deleteTypeById" class="action.TypeAction" method="deleteTypeById">
+			<!-- 配置视图页面 -->
+			<result name="success">/type/type_detail.jsp</result>
+			<result name="fail">/error.jsp</result>
+		</action>
+	</package>
+	
+	<package name="product" namespace="/product" extends="default">
+		<action name="createProduct" class="action.ProductAction" method="createProduct">
+			<!-- 配置视图页面 -->
+			<result name="success">/product/product_detail.jsp</result>
+			<result name="fail">/error.jsp</result>
+		</action>
+		<action name="updateProduct" class="action.ProductAction" method="updateProduct">
+			<!-- 配置视图页面 -->
+			<result name="success">/product/product_detail.jsp</result>
+			<result name="fail">/error.jsp</result>
+		</action>
+		<action name="getProductById" class="action.ProductAction" method="getProductById">
+			<!-- 配置视图页面 -->
+			<result name="success">/product/update_product.jsp</result>
+			<result name="fail">/error.jsp</result>
+		</action>
+		<action name="getAllProducts" class="action.ProductAction" method="getAllProducts">
+			<!-- 配置视图页面 -->
+			<result name="success">/product/product_list.jsp</result>
+			<result name="fail">/error.jsp</result>
+		</action>
+		<action name="deleteProductById" class="action.ProductAction" method="deleteProductById">
+			<!-- 配置视图页面 -->
+			<result name="success">/product/product_detail.jsp</result>
+			<result name="fail">/error.jsp</result>
 		</action>
 	</package>
 
