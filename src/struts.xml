@@ -39,6 +39,16 @@
 			<result name="get_success">/type/update_type.jsp</result>
 			<result name="get_fail">/type/index.jsp</result>
 		</action>
+		
+		<action name="addToCart" class="shoppingAction" method="addToCart">
+			<result name="success">/addToCart_success.jsp</result>
+		</action>
+		
+		<action name="checkout" class="shoppingAction" method="checkout">
+			<result name="success">/system/checkout_success.jsp</result>
+			<result name="error">/system/index.jsp</result>
+		</action>
+		 
 	</package>
 
 </struts>

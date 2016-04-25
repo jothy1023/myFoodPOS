@@ -19,7 +19,7 @@ public class TypeAction extends SuperAction implements ModelDriven<Type> {
 
 	// 新增产品，由service调用方法完成
 	public String createType() throws Exception {
-		if (typeService.createType(type)) {
+		if (typeService.createType(type)){
 			session.setAttribute("type", type);
 			return "create_success";
 		} else {
