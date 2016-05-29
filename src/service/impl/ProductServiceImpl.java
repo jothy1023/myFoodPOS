@@ -1,5 +1,7 @@
 package service.impl;
 
+import java.util.List;
+
 import dao.ProductDAO;
 import dao.impl.ProductDAOImpl;
 import entity.Product;
@@ -24,7 +26,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public boolean updateProduct(int pid, String pname, int price, int psize, Type type) {
+	public boolean updateProduct(int pid, String pname, int price, String psize, Type type) {
 		return this.productdao.updateProduct(pid, pname, price, psize, type);
 	}
 
@@ -34,14 +36,17 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	public List getProductsByType(int typeId) {
+		return this.productdao.getProductsByType(typeId);
+	}
+	
+	@Override
 	public Product getProductById(int pid) {
-		return this.getProductById(pid);
+		return this.productdao.getProductById(pid);
 	}
 
 	@Override
 	public Product deleteProductById(int pid) {
 		return this.productdao.deleteProductById(pid);
 	}
-
-
 }

@@ -6,7 +6,7 @@
 <!-- 实体映射文件 -->
 <hibernate-mapping>
 	<!-- 动态局部更新 -->
-   <class name="entity.Type" table="TYPE" dynamic-update="true">
+   <class name="entity.Type" table="TYPE" dynamic-update="true" lazy="false">
       <!-- 主键 -->
       <id name="tid" type="int">
       	<!--自动增长类型-->

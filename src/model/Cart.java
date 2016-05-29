@@ -1,7 +1,9 @@
-package entity;
+package model;
 
 import java.util.*;
+
 import entity.*;
+
 
 public class Cart {
 	protected Map<Integer,Orderitem> items;

@@ -6,7 +6,6 @@
 <struts>
 
 	<package name="default" namespace="/" extends="struts-default">
-
 	</package>
 	
 	<package name="type" namespace="/type" extends="default">
@@ -36,14 +35,12 @@
 			<result name="fail">/error.jsp</result>
 		</action>
 		
-		<action name="addToCart" class="shoppingAction" method="addToCart">
-			<result name="success">/addToCart_success.jsp</result>
-		</action>
-		
-		<action name="checkout" class="shoppingAction" method="checkout">
+		<action name="checkout" class="action.ShoppingAction" method="checkout">
 			<result name="success">/system/checkout_success.jsp</result>
 			<result name="error">/system/index.jsp</result>
 		</action>
+		
+		
 	</package>
 	
 	<package name="product" namespace="/product" extends="default">
@@ -67,10 +64,22 @@
 			<result name="success">/product/product_list.jsp</result>
 			<result name="fail">/error.jsp</result>
 		</action>
+		
 		<action name="deleteProductById" class="action.ProductAction" method="deleteProductById">
 			<!-- 配置视图页面 -->
 			<result name="success">/product/product_detail.jsp</result>
 			<result name="fail">/error.jsp</result>
+		</action>
+	</package>
+	
+	<package name="system" namespace="/system" extends="struts-default">
+		<action name="getProductsByType" class="action.ProductAction" method="getProductsByType">
+			<!-- 配置视图页面 -->
+			<result name="success">/system/browseCatalog.jsp</result>
+			<result name="fail">/error.jsp</result>
+		</action>
+		<action name="addToCart" class="action.ShoppingAction" method="addToCart">
+			<result name="success">/system/showCart.jsp</result>
 		</action>
 	</package>
 

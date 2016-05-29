@@ -5,6 +5,7 @@ import java.util.Scanner;
 import junit.framework.Assert;
 import org.junit.Test;
 
+
 import dao.TypeDAO;
 import dao.impl.TypeDAOImpl;
 import entity.Type;

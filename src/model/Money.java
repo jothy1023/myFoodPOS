@@ -1,4 +1,4 @@
-package entity;
+package model;
 
 public class Money {
 	private int amount;

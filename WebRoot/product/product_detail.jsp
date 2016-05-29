@@ -54,7 +54,7 @@
 	<script>
 		(function(){
 			alert("操作成功!");
-			// 重新加载type列表
+			// 重新加载product列表
 			$('.typelist_iframe', parent.document).attr('src', 'product/getAllProduct.action');
 		})();
 	</script>

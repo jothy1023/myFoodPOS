@@ -52,7 +52,7 @@
 				<div class="col-lg-9 tab-content">
 					<div>
 					<!-- 产品列表 -->
-						<iframe  class="typelist_iframe" src="type/getAllTypes.action"
+						<iframe class="typelist_iframe" src="type/getAllTypes.action"
 							frameborder="0" style="width: 100%; height: 195px; background: #f3f3f3;border: 1px solid #f3f3f3;">
 						</iframe>
 					</div>

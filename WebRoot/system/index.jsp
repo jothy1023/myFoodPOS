@@ -1,8 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String path = request.getContextPath();
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -20,10 +20,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	<link rel="stylesheet" type="text/css" href="type/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="system/css/index.css">
-	<script type="text/javascript" src="type/js/jquery-2.1.3.min.js"></script>
-	<script type="text/javascript" src="type/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	
 	<script>
 		$(function(){
@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				var product = $(this).data('name');
 				$(".table tbody").append("<tr><td>"+product+"</td></tr>");
 			});
-		})
+		});
 	</script>
   </head>
   
@@ -47,27 +47,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div id="bill">
 				<s:set name="items" value="#session.cart.items"/>
 				<s:if test="#items.sizze!=0"/>
-				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<td>商品名称</td>
-							<td>商品编号</td>
-							<td>规格</td>
-							<td>价格</td>
-							<td>数量</td>
-						</tr>
-					</thead>
-					<tbody>
-						<s:iterator value="#items" />
-						<tr>
-							<td><s:property value="value.product.pname"/></td>
-							<td><s:property value="value.product.pid"/></td>
-							<td><s:property value="value.product.size"/></td>
-							<td><s:property value="value.product.price"/></td>
-							<td><input type="text" value="<s:property value="value.quantity"/>" size="4"/></td>
-						</tr>
-					</tbody>
-				</table>
+				
+				<iframe class="typelist_iframe" src="system/showCart.jsp"
+						frameborder="0" style="width: 100%; height: 300px; background: #f3f3f3;border: 1px solid #f3f3f3;">
+				</iframe>
 			</div>
 			<div id="billButton">
 				<a href="#">增加</a>
@@ -100,20 +83,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li>
 				</ul>
 			</div>
-			<div class="col-lg-9">
-				<s:iterator value="#request['products]" id="product">
-				<div class="food col-lg-2">
-					<span><s:property value="#product.pname"/></span>
-					<span><s:property value="#product.price"/></span>
-					<form action="addToCart.action" method="post"></form>
-						<input type="text" name="quantity" value="0" size="4"/>
-						<input type="hidden" name="productId" value="<s:property value="#product.productId"/>">
-						<input type="submit" name="submit" value="添加"/>
-					</form>
-				</div>
-				</s:iterator>
-				<!-- <div class="food col-lg-2" data-name="鸡腿堡" data-id="2">鸡腿堡</div>-->
+			<div class="col-lg-10">
+				<iframe class="typelist_iframe" src="system/getProductsByType.action"
+							frameborder="0" style="width: 100%; height: 500px; background: #f3f3f3;border: 1px solid #f3f3f3;">
+					<!--<s:action name="getProductsByType" executeResult="true" />-->
+				</iframe>
 			</div>
+			
+			
+			 
 		</div>
 		
 	</body>

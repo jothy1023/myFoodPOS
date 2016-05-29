@@ -1,5 +1,8 @@
 package entity;
 
+import model.Money;
+
+
 public class TestMoney {
 	public static void main(String[] args){
 		Money money1 = new Money();

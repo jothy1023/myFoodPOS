@@ -1,65 +1,117 @@
 package entity;
 
-public class Product {
-	private int pid;
-	private String pname;
-	private int price;
-	// 产品规格
-	private int psize;
-	// 应该是对类别进行映射，而非类别编号
-	private Type type;
+import java.util.HashSet;
+import java.util.Set;
 
+/**
+ * Product entity. @author MyEclipse Persistence Tools
+ */
+
+public class Product implements java.io.Serializable {
+
+	// Fields
+
+	private Integer id;
+	private Type type;
+	private String time;
+	private Integer price;
+	private String pname;
+	private String psize;
+	private Integer idx;
+	private Set orderitems = new HashSet(0);
+
+	// Constructors
+
+	/** default constructor */
 	public Product() {
-		
 	}
 
-	public Product(int pid, String pname, int price, Type type, int psize) {
-		this.pid = pid;
-		this.pname = pname;
-		this.price = price;
+	/** minimal constructor */
+	public Product(Type type, String time, Integer price, String pname,
+			String psize) {
 		this.type = type;
+		this.time = time;
+		this.price = price;
+		this.pname = pname;
 		this.psize = psize;
 	}
 
-	public int getPid() {
-		return pid;
-	}
-
-	public void setPid(int pid) {
-		this.pid = pid;
-	}
-
-	public String getPname() {
-		return pname;
-	}
-
-	public void setPname(String pname) {
-		this.pname = pname;
-	}
-
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
+	/** full constructor */
+	public Product(Type type, String time, Integer price, String pname,
+			String psize, Integer idx, Set orderitems) {
+		this.type = type;
+		this.time = time;
 		this.price = price;
+		this.pname = pname;
+		this.psize = psize;
+		this.idx = idx;
+		this.orderitems = orderitems;
+	}
+
+	// Property accessors
+
+	public Integer getId() {
+		return this.id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Type getType() {
-		return type;
+		return this.type;
 	}
 
 	public void setType(Type type) {
 		this.type = type;
 	}
 
-	public int getPsize() {
-		return psize;
+	public String getTime() {
+		return this.time;
 	}
 
-	public void setPsize(int psize) {
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public Integer getPrice() {
+		return this.price;
+	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
+
+	public String getPname() {
+		return this.pname;
+	}
+
+	public void setPname(String pname) {
+		this.pname = pname;
+	}
+
+	public String getPsize() {
+		return this.psize;
+	}
+
+	public void setPsize(String psize) {
 		this.psize = psize;
 	}
-	
-	
+
+	public Integer getIdx() {
+		return this.idx;
+	}
+
+	public void setIdx(Integer idx) {
+		this.idx = idx;
+	}
+
+	public Set getOrderitems() {
+		return this.orderitems;
+	}
+
+	public void setOrderitems(Set orderitems) {
+		this.orderitems = orderitems;
+	}
+
 }

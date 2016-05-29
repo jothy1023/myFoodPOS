@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+
 import dao.TypeDAO;
 import db.MyHibernateSessionFactory;
 import entity.Type;

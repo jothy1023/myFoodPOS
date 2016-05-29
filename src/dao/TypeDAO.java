@@ -4,6 +4,8 @@ import java.util.List;
 
 import entity.Type;
 
+
+
 // 业务逻辑接口
 public interface TypeDAO {
 

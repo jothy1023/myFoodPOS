@@ -4,7 +4,9 @@ import java.io.Console;
 
 import service.TypeService;
 import service.impl.TypeServiceImpl;
+
 import com.opensymphony.xwork2.ModelDriven;
+
 import entity.Type;
 
 // 模型驱动的方式传递数据
