@@ -7,7 +7,6 @@
 
 	<package name="default" namespace="/" extends="struts-default">
 	</package>
-	
 	<package name="type" namespace="/type" extends="default">
 		<action name="createType" class="action.TypeAction" method="createType">
 			<!-- 配置视图页面 -->
@@ -34,13 +33,7 @@
 			<result name="success">/type/type_detail.jsp</result>
 			<result name="fail">/error.jsp</result>
 		</action>
-		
-		<action name="checkout" class="action.ShoppingAction" method="checkout">
-			<result name="success">/system/checkout_success.jsp</result>
-			<result name="error">/system/index.jsp</result>
-		</action>
-		
-		
+			
 	</package>
 	
 	<package name="product" namespace="/product" extends="default">
@@ -73,14 +66,23 @@
 	</package>
 	
 	<package name="system" namespace="/system" extends="struts-default">
+		<action name="login" class="action.LoginAction">
+			<result name="success">/system/index.jsp</result>
+			<result name="error">/system/login.jsp</result>
+		</action>
 		<action name="getProductsByType" class="action.ProductAction" method="getProductsByType">
 			<!-- 配置视图页面 -->
-			<result name="success">/system/browseCatalog.jsp</result>
+			<result name="success">/system/menu.jsp</result>
 			<result name="fail">/error.jsp</result>
 		</action>
 		<action name="addToCart" class="action.ShoppingAction" method="addToCart">
-			<result name="success">/system/showCart.jsp</result>
+			<result name="success">/system/index.jsp</result>
 		</action>
+		<action name="checkout" class="action.ShoppingAction" method="checkout">
+			<result name="success">/system/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
 	</package>
 
 </struts>

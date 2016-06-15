@@ -14,7 +14,7 @@ public class Orders implements java.io.Serializable {
 	// Fields
 
 	private Integer orderId;
-	private Integer userId;
+	private User user;
 	private Date orderDate;
 	private Set orderitems = new HashSet(0);
 
@@ -25,14 +25,14 @@ public class Orders implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Orders(Integer userId, Date orderDate) {
-		this.userId = userId;
+	public Orders(User user, Date orderDate) {
+		this.user = user;
 		this.orderDate = orderDate;
 	}
 
 	/** full constructor */
-	public Orders(Integer userId, Date orderDate, Set orderitems) {
-		this.userId = userId;
+	public Orders(User user, Date orderDate, Set orderitems) {
+		this.user = user;
 		this.orderDate = orderDate;
 		this.orderitems = orderitems;
 	}
@@ -47,12 +47,12 @@ public class Orders implements java.io.Serializable {
 		this.orderId = orderId;
 	}
 
-	public Integer getUserId() {
-		return this.userId;
+	public User getUser() {
+		return this.user;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Date getOrderDate() {

@@ -18,7 +18,7 @@ import entity.Product;
 import entity.Type;
 
 public class ProductDAOImpl implements ProductDAO {
-
+	private Session session;
 	private Transaction tx = null;
 	private String hql = "";
 
@@ -49,7 +49,7 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public Product getProductById(int pid) {
 		try {
-			Session session = MyHibernateSessionFactory.getSessionFactory()
+			session = MyHibernateSessionFactory.getSessionFactory()
 					.getCurrentSession();
 			// 开始事务
 			tx = session.beginTransaction();
@@ -71,13 +71,12 @@ public class ProductDAOImpl implements ProductDAO {
 			if (tx != null) {
 				tx = null;
 			}
+			session.close();
 		}
 	}
 	
 	//获取同一类型的所有产品
 	public List getProductsByType(int typeId) {
-		System.out.println("ssjjkhagfk");
-		typeId=1;
 		Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
 		tx = session.beginTransaction();
 		hql = "from Product p where p.type.tid=" + typeId;
@@ -86,9 +85,11 @@ public class ProductDAOImpl implements ProductDAO {
 		if(products.size()>0){
 			Map request = (Map)ActionContext.getContext().get("request");
 			request.put("products", products);
+			if(tx!=null) tx = null;
 			session.close();
 			return products;
 		}
+		if(tx!=null) tx = null;
 		session.close();
 		return null;
 	}

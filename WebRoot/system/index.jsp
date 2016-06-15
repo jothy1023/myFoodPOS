@@ -25,14 +25,7 @@
 	<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	
-	<script>
-		$(function(){
-			$(".food").bind("click",function(){
-				var product = $(this).data('name');
-				$(".table tbody").append("<tr><td>"+product+"</td></tr>");
-			});
-		});
-	</script>
+	
   </head>
   
   <body>
@@ -46,54 +39,77 @@
 		<div id="billFrame" class="col-lg-3">
 			<div id="bill">
 				<s:set name="items" value="#session.cart.items"/>
-				<s:if test="#items.sizze!=0"/>
 				
-				<iframe class="typelist_iframe" src="system/showCart.jsp"
-						frameborder="0" style="width: 100%; height: 300px; background: #f3f3f3;border: 1px solid #f3f3f3;">
-				</iframe>
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<td>商品名称</td>
+								<td>商品编号</td>
+								<td>规格</td>
+								<td>价格</td>
+								<td>数量</td>
+							</tr>
+						</thead>
+						<tbody>
+						<s:if test="#items.sizze!=0">
+							<s:iterator value="#items" >
+								<tr>
+									<td><s:property value="value.product.pname"/></td>
+									<td><s:property value="value.product.id"/></td>
+									<td><s:property value="value.product.psize"/></td>
+									<td><s:property value="value.product.price"/></td>
+									<td><input type="text" size="4" value='<s:property value="value.quantity"/>' /></td>
+								</tr>
+							</s:iterator>	
+						</s:if>
+					    </tbody>
+					</table>
 			</div>
 			<div id="billButton">
 				<a href="#">增加</a>
 				<a href="#">减少</a>
 				<a href="#">删除该项</a>
-				<a href="shopping.action">确定</a>
+				<a href="<%=path %>/system/checkout.action">确定</a>
 			</div>
 		</div>
 		
 		<div class="orderView col-lg-8">
 			<div class="col-lg-2">
-				<ul id="foodType" class="nav nav-pills nav-stacked">
+				<ul id="foodType" class="operateTab nav nav-pills nav-stacked">
 					<li class="active">
-					<a href="#" data-toggle="tab">主食</a>
+					<a href="<%=path %>/system/getProductsByType.action?tid=1">主食</a>
 					</li>
 					<li>
-					<a href="#" data-toggle="tab">副食</a>
+					<a href="<%=path %>/system/getProductsByType.action?tid=2">配餐</a>
 					</li>
 					<li>
-					<a href="#" data-toggle="tab">饮品系列</a>
+					<a href="<%=path %>/system/getProductsByType.action?tid=3">早餐</a>
 					</li>
 					<li>
-					<a href="#" data-toggle="tab">套餐</a>
+					<a href="<%=path %>/system/getProductsByType.action?tid=4">饮料</a>
 					</li>
 					<li>
-					<a href="#" data-toggle="tab">雪糕</a>
+					<a href="<%=path %>/system/getProductsByType.action?tid=5">甜品</a>
 					</li>
 					<li>
-					<a href="#" data-toggle="tab">西式中餐</a>
+					<a href="<%=path %>/system/getProductsByType.action?tid=6">西式中餐</a>
 					</li>
 				</ul>
 			</div>
 			<div class="col-lg-10">
-				<iframe class="typelist_iframe" src="system/getProductsByType.action"
-							frameborder="0" style="width: 100%; height: 500px; background: #f3f3f3;border: 1px solid #f3f3f3;">
-					<!--<s:action name="getProductsByType" executeResult="true" />-->
-				</iframe>
-			</div>
-			
-			
-			 
+				<s:action name="getProductsByType" namespace="/system" executeResult="true" />
+			</div>	 
 		</div>
-		
+		<script>
+		$(function(){
+			$(".food").bind("click",function(){
+				var product = $(this).data('name');
+				$(".table tbody").append("<tr><td>"+product+"</td></tr>");
+			});
+		});
+		$(".operateTab li a").click(function(e) {
+			$(this).parent().addClass('active').siblings().removeClass('active');
+		});
+	</script>
 	</body>
-  </body>
 </html>

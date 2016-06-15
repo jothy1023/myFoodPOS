@@ -6,19 +6,30 @@ import org.hibernate.Transaction;
 
 import dao.IOrderDAO;
 import db.MyHibernateSessionFactory;
+import entity.Orderitem;
 import entity.Orders;
 
 public class OrderDAOImpl implements IOrderDAO {
 
-	@Override
+//	保存订单
 	public Orders saveOrder(Orders order) {
 		//保存点餐信息
 		Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
 		Transaction tx = session.beginTransaction();
 		session.save(order);
 		tx.commit();
-		session.close();
+//		session.close();
 		return order;
+	}
+
+	//保存每一项订单项
+	public Orderitem saveOrderItem(Orderitem orderitem) {
+		Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
+		Transaction tx = session.beginTransaction();
+		session.save(orderitem);
+		tx.commit();
+		session.close();
+		return orderitem;
 	}
 
 }

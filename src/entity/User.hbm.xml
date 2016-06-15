@@ -25,5 +25,11 @@
         <property name="age" type="java.lang.Integer">
             <column name="age" not-null="true" />
         </property>
+        <set name="orderses" inverse="true">
+            <key>
+                <column name="userId" not-null="true" />
+            </key>
+            <one-to-many class="entity.Orders" />
+        </set>
     </class>
 </hibernate-mapping>

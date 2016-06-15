@@ -17,9 +17,9 @@ public class Cart {
 	public void addProduct(Integer productId,Orderitem orderitem){
 		//是否存在，如果存在，更改数量
 		//如果不存在的话，添加到集合
-		if(items.containsKey("productId")){
+		if(items.containsKey(productId)){
 			Orderitem _orderitem = items.get(productId);
-			orderitem.setQuantity(_orderitem.getQuantity()+_orderitem.getOrderItemId());
+			_orderitem.setQuantity(orderitem.getQuantity()+_orderitem.getQuantity());
 			items.put(productId, _orderitem);
 		}else{
 			items.put(productId, orderitem);

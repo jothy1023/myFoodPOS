@@ -10,14 +10,13 @@
             <column name="orderId" />
             <generator class="native" />
         </id>
-        <property name="userId" type="java.lang.Integer">
+        <many-to-one name="user" class="entity.User" fetch="select">
             <column name="userId" not-null="true" />
-        </property>
+        </many-to-one>
         <property name="orderDate" type="java.sql.Timestamp">
             <column name="orderDate" length="19" not-null="true" />
         </property>
-        <!-- cascade="all"设置使得数据库表在所有情况下都进行关联操作，以维护数据的一致性 -->
-        <set name="orderitems" cascade="all" inverse="true">
+        <set name="orderitems" inverse="true">
             <key>
                 <column name="orderId" not-null="true" />
             </key>

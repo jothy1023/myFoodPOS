@@ -1,5 +1,8 @@
 package entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * User entity. @author MyEclipse Persistence Tools
  */
@@ -14,14 +17,21 @@ public class User implements java.io.Serializable {
 	private String catagory;
 	private String sex;
 	private Integer age;
+	private Set orderses = new HashSet(0);
 
 	// Constructors
 
 	/** default constructor */
 	public User() {
 	}
-
-	/** full constructor */
+	
+	public User(String password,String username){
+		this.password = password;
+		this.username = username;
+	}
+	
+	
+	/** minimal constructor */
 	public User(String password, String username, String catagory, String sex,
 			Integer age) {
 		this.password = password;
@@ -29,6 +39,17 @@ public class User implements java.io.Serializable {
 		this.catagory = catagory;
 		this.sex = sex;
 		this.age = age;
+	}
+
+	/** full constructor */
+	public User(String password, String username, String catagory, String sex,
+			Integer age, Set orderses) {
+		this.password = password;
+		this.username = username;
+		this.catagory = catagory;
+		this.sex = sex;
+		this.age = age;
+		this.orderses = orderses;
 	}
 
 	// Property accessors
@@ -79,6 +100,14 @@ public class User implements java.io.Serializable {
 
 	public void setAge(Integer age) {
 		this.age = age;
+	}
+
+	public Set getOrderses() {
+		return this.orderses;
+	}
+
+	public void setOrderses(Set orderses) {
+		this.orderses = orderses;
 	}
 
 }

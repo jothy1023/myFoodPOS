@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -23,28 +24,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-	<table class="table table-bordered">
-		<thead>
-			<tr>
-				<td>商品名称</td>
-				<td>商品编号</td>
-				<td>规格</td>
-				<td>价格</td>
-				<td>数量</td>
-			</tr>
-		</thead>
-		<tbody>
+    <s:iterator value="#request['products']" id="product">
+		<div class="food col-lg-2">
+			<span><s:property value="#product.pname"/></span>
+			<span><s:property value="#product.price"/></span>
+			<form action="/myFoodPOS/system/addToCart.action" method="post">
+				<!--  <input type="text" name="quantity" value="0" size="4"/> -->
+				<input type="hidden" name="id" value="<s:property value="#product.id"/>">
+				<input type="submit" name="submit" value="添加"/>
+			</form>
+		</div>
 		
-		<s:iterator name="items" value="#session.cart.items" >
-			<tr>
-				<td><s:property value="#items.product.pname"/></td>
-				<td><s:property value="#items.product.id"/></td>
-				<td><s:property value="#items.product.psize"/></td>
-				<td><s:property value="#items.product.price"/></td>
-				<td><input type="text" size="4" value='<s:property value="#product.id"/>' /></td>
-			</tr>
-		</s:iterator>	
-		</tbody>
-	</table>
+	</s:iterator>
   </body>
 </html>

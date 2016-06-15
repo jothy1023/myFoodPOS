@@ -69,7 +69,12 @@ public class ProductAction extends SuperAction implements ModelDriven<Product> {
 		
 		//获取同一类型的所有产品
 		public String getProductsByType() throws Exception{
-			int tid = type.getTid();
+			int tid = 0;
+			if(request.getParameter("tid")==null){
+				tid = 1;
+			}else{
+				 tid = Integer.parseInt(request.getParameter("tid"));
+			}
 			List products = productService.getProductsByType(tid);
 			if(products!=null){
 				Map request = (Map)ActionContext.getContext().get("request");
