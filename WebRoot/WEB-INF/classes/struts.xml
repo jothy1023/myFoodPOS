@@ -70,6 +70,10 @@
 			<result name="success">/system/index.jsp</result>
 			<result name="error">/system/login.jsp</result>
 		</action>
+		<action name="logout" class="action.LoginAction">
+			<result name="success">/system/login.jsp</result>
+			<result name="error">/system/login.jsp</result>
+		</action>
 		<action name="getProductsByType" class="action.ProductAction" method="getProductsByType">
 			<!-- 配置视图页面 -->
 			<result name="success">/system/menu.jsp</result>
@@ -79,6 +83,14 @@
 			<result name="success">/system/index.jsp</result>
 		</action>
 		<action name="checkout" class="action.ShoppingAction" method="checkout">
+			<result name="success">/system/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="deleteQuantity" class="action.ShoppingAction" method="deleteQuantity">
+			<result name="success">/system/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="deleteItem" class="action.ShoppingAction" method="deleteItem">
 			<result name="success">/system/index.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>

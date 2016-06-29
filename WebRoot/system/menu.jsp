@@ -20,19 +20,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
   </head>
   
   <body>
     <s:iterator value="#request['products']" id="product">
-		<div class="food col-lg-2">
-			<span><s:property value="#product.pname"/></span>
-			<span><s:property value="#product.price"/></span>
-			<form action="/myFoodPOS/system/addToCart.action" method="post">
-				<!--  <input type="text" name="quantity" value="0" size="4"/> -->
-				<input type="hidden" name="id" value="<s:property value="#product.id"/>">
-				<input type="submit" name="submit" value="添加"/>
-			</form>
+		<div class="food col-lg-2" id="menuItem">
+			<div class="food-desp">
+				<span><s:property value="#product.pname"/></span>
+				<span><s:property value="#product.price"/></span>
+			</div>
+			<div class="food-form">
+				<form id="menuForm" name="menuForm" action="/myFoodPOS/system/addToCart.action" method="post">
+					<input type="hidden" name="id" value="<s:property value="#product.id"/>">
+					<input type="submit" name="submit" value="添加"/>
+				</form>
+			</div>
 		</div>
 		
 	</s:iterator>

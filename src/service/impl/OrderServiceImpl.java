@@ -20,9 +20,5 @@ public class OrderServiceImpl implements IOrderService {
 		return orderDAO.saveOrder(order);
 	}
 
-	//保存订单项
-	public Orderitem saveOrderItem(Orderitem orderitem) {
-		return orderDAO.saveOrderItem(orderitem);
-	}
 
 }
