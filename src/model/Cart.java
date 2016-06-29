@@ -7,6 +7,7 @@ import entity.*;
 
 public class Cart {
 	protected Map<Integer,Orderitem> items;
+	private int total;
 	
 	public Cart(){
 		if(items == null)
@@ -26,10 +27,15 @@ public class Cart {
 		}
 	}
 	//更新列表的食物数量
-	public void updateCart(Integer productId,int quantity){
+	public void updateCart(Integer productId){
 		Orderitem orderitem = items.get(productId);
-		orderitem.setQuantity(quantity);
+		orderitem.setQuantity(orderitem.getQuantity() - 1);
 		items.put(productId, orderitem);
+	}
+	
+	//删除该项食物
+	public void deleteProduct(Integer productId){
+		items.remove(productId);
 	}
 	
 	//计算总价格

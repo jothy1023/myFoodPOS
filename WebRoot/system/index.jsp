@@ -32,7 +32,7 @@
    <div class="header">
 			<ul id="myTab" class="nav nav-pills pull-right">
 				<li class="active">
-					<a href="#" data-toggle="tab">退出系统</a>
+					<a href="/myFoodPOS/system/logout.action">退出系统</a>
 				</li>
 			</ul>
 		</div>
@@ -51,24 +51,32 @@
 							</tr>
 						</thead>
 						<tbody>
-						<s:if test="#items.sizze!=0">
+						<s:if test="#items.size!=0">
 							<s:iterator value="#items" >
 								<tr>
 									<td><s:property value="value.product.pname"/></td>
 									<td><s:property value="value.product.id"/></td>
 									<td><s:property value="value.product.psize"/></td>
 									<td><s:property value="value.product.price"/></td>
-									<td><input type="text" size="4" value='<s:property value="value.quantity"/>' /></td>
+									<td><s:property value="value.quantity"/></td>
 								</tr>
 							</s:iterator>	
 						</s:if>
 					    </tbody>
 					</table>
+					<div id="total">消费金额：<s:property value="#session.cart.total"/></div>
 			</div>
 			<div id="billButton">
-				<a href="#">增加</a>
-				<a href="#">减少</a>
-				<a href="#">删除该项</a>
+				<a href="javascript:;" class="reduce">减少
+					<form action="/myFoodPOS/system/deleteQuantity.action" method="post">
+						<input type="hidden" value="" name="id" />
+					</form>
+				</a>
+				<a href="javascript:;" class="delete">删除该项
+					<form action="/myFoodPOS/system/deleteItem.action" method="post">
+						<input type="hidden" value="" name="id" />
+					</form>
+				</a>
 				<a href="<%=path %>/system/checkout.action">确定</a>
 			</div>
 		</div>
@@ -109,6 +117,21 @@
 		});
 		$(".operateTab li a").click(function(e) {
 			$(this).parent().addClass('active').siblings().removeClass('active');
+		});
+		$("#bill table tbody tr").bind("click",function(){
+			$(this).addClass("selected").siblings().removeClass("selected");
+		});
+		
+		$("#billButton .reduce").bind("click",function(){
+			var optid = $("#bill .selected td:eq(1)").html();
+			$("#billButton .reduce input").attr("value",optid);
+			$("#billButton .reduce form").submit();
+		});
+		
+		$("#billButton .delete").bind("click",function(){
+			var optid = $("#bill .selected td:eq(1)").html();
+			$("#billButton .delete input").attr("value",optid);
+			$("#billButton .delete form").submit();
 		});
 	</script>
 	</body>

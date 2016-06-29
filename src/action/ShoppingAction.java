@@ -17,6 +17,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.inject.Context;
+import com.sun.accessibility.internal.resources.accessibility;
 
 import dao.IOrderDAO;
 import entity.Orderitem;
@@ -35,6 +36,7 @@ public class ShoppingAction extends ActionSupport implements ModelDriven<Product
 	//添加到列表
 	public String addToCart() throws Exception{
 		int productId = product.getId();
+		System.out.println("id=" + productId);
 		Product products = productSerivce.getProductById(productId);
 		Orderitem orderItem = new Orderitem();
 		orderItem.setProduct(products);
@@ -49,7 +51,26 @@ public class ShoppingAction extends ActionSupport implements ModelDriven<Product
 		return SUCCESS;
 	}
 	
-
+	//减少商品数量
+	public String deleteQuantity() throws Exception{
+		int productId = product.getId();
+		Map session = ActionContext.getContext().getSession();
+		Cart cart = (Cart)session.get("cart");
+		cart.updateCart(productId);
+		session.put("cart", cart);
+		return SUCCESS;
+	}
+	
+	//删除购物车中某项食物
+	public String deleteItem() throws Exception{
+		int productId = product.getId();
+		Map session = ActionContext.getContext().getSession();
+		Cart cart = (Cart)session.get("cart");
+		cart.deleteProduct(productId);
+		session.put("cart", cart);
+		return SUCCESS;
+	}
+	
 	public int getQuantity() {
 		return quantity;
 	}
@@ -60,14 +81,7 @@ public class ShoppingAction extends ActionSupport implements ModelDriven<Product
 	}
 
 
-	//更新购物车
-	public String updateCart() throws Exception{
-		Map session = ActionContext.getContext().getSession();
-		Cart cart = (Cart)session.get("cart");
-		cart.updateCart(product.getId(),quantity);
-		session.put("cart", cart);
-		return SUCCESS;
-	}
+
 	
 	//列出某种类型的产品
 	public String browseProduct() throws Exception{
@@ -81,8 +95,6 @@ public class ShoppingAction extends ActionSupport implements ModelDriven<Product
 		Map session = ActionContext.getContext().getSession();
 		User user = (User)session.get("user");
 		Cart cart = (Cart)session.get("cart");
-		System.out.println(user);
-		System.out.println(cart);
 		if(user == null || cart == null)
 			return ActionSupport.ERROR;
 		Orders order = new Orders();
@@ -92,11 +104,11 @@ public class ShoppingAction extends ActionSupport implements ModelDriven<Product
 			Orderitem orderitem = (Orderitem)it.next();
 			orderitem.setOrders(order);
 			order.getOrderitems().add(orderitem);
-//			orderService.saveOrderItem(orderitem);  这里出现错误
 		}
 		orderService.saveOrder(order);
-		Map request =(Map)ActionContext.getContext().get("request");
-		request.put("order", order);
+//		Map request =(Map)ActionContext.getContext().get("request");
+//		request.put("order", order);
+		session.put("cart", null);
 		return SUCCESS;
 	}
 

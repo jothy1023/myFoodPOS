@@ -40,6 +40,12 @@ public class LoginAction extends ActionSupport implements ModelDriven<User> {
 			return ERROR;
 		}
 	}
+	
+	public String logout() throws Exception{
+		Map session = ActionContext.getContext().getSession();
+		session.remove("user");
+		return SUCCESS;
+	}
 
 
 	public IUserService getUserService() {

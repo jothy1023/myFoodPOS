@@ -18,18 +18,7 @@ public class OrderDAOImpl implements IOrderDAO {
 		Transaction tx = session.beginTransaction();
 		session.save(order);
 		tx.commit();
-//		session.close();
 		return order;
-	}
-
-	//保存每一项订单项
-	public Orderitem saveOrderItem(Orderitem orderitem) {
-		Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
-		Transaction tx = session.beginTransaction();
-		session.save(orderitem);
-		tx.commit();
-		session.close();
-		return orderitem;
 	}
 
 }
