@@ -33,29 +33,29 @@
 </head>
 
 <body>
-		<div id="searchType" class="tab-pane fade in active">
-			<form role="form">
-				<form role="form">
-					<!-- <div class="form-group">
-						<label for="searchTypeId">请输入产品类别编号</label> <input type="text"
-							id="searchTypeId" name="searchTypeId" class="form-control"
-							placeholder="请输入数字编号" />
-					</div> -->
-					<div class="form-group"><%-- 
+	<div id="searchType" class="tab-pane fade in active">
+		<form role="form">
+			<div class="form-group">
+				<%-- 
 						<s:set name="product" value="#session.product" /> --%>
-						<p>修改/删除产品如下：<br /></p>
-						<label>产品类别编号:  <s:property value="pid" /></label><br />
-						<label>产品类别名称:  <s:property value="pname" /></label>
-					</div><!-- 
+				<p>
+					修改/删除产品如下：<br />
+				</p>
+				<label>产品类别编号: <s:property value="pid" /></label><br /> <label>产品类别名称:
+					<s:property value="pname" />
+				</label>
+			</div>
+			<!-- 
 					<button type="submit" class="btn btn-default">查询</button> -->
-				</form>
-		</div>
+		</form>
+	</div>
 </body>
-	<script>
-		(function(){
-			alert("操作成功!");
-			// 重新加载product列表
-			$('.typelist_iframe', parent.document).attr('src', 'product/getAllProduct.action');
-		})();
-	</script>
+<script>
+	(function() {
+		alert("操作成功!");
+		// 重新加载product列表
+		$('.product_iframe', parent.document).attr('src',
+				'product/getAllProducts.action');
+	})();
+</script>
 </html>

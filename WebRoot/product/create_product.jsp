@@ -5,6 +5,8 @@
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+	Date date = new Date();
+	String time = "111";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -35,43 +37,42 @@
 <body>
 
 	<div id="createItem" class="tab-pane fade in active">
-		<form role="form">
+		<form role="form" action="<%=path %>/product/createProduct.action" method="post">
 			<div class="form-group">
 				<label for="inputProductName">产品名称</label> <input type="text"
 					id="inputProductName" name="pname" class="form-control"
 					placeholder="名称" />
 			</div>
 			<div>
-				<label>产品类别：</label> <select class="form-control" name="Type">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
+				<label>产品类别：</label> <select class="form-control" name="type.tid">
+					<s:iterator value="#session.types" var="type">
+						<option value="<s:property value="#type.tid" />"><s:property value="#type.tid" /></option>
+					</s:iterator>
 				</select>
 			</div>
 			<div class="form-group">
 				<label for="inputProductPrice">产品价格</label> <input type="text"
 					id="inputProductPrice" name="price" class="form-control"
-					placeholder="名称" />
+					placeholder="价格" />
 			</div>
 			<div>
 				<label>产品规格：</label> <select class="form-control"
 					name="psize">
-					<option></option>
 					<option value="1">大</option>
 					<option value="2">中</option>
 					<option value="3">小</option>
 				</select>
 			</div>
+			<input type="hidden" value="<%=time %>" name="time" />
 			<button type="submit" name="submit" class="btn btn-default">添加</button>
 		</form>
 	</div>
 	<script>
-		$('button').click(
+		/* $('button').click(
 				function() {
 					$('.type_iframe', parent.document).attr('src',
 							'product/product_detail.jsp');
-				});
+				}); */
 	</script>
 </body>
 </html>

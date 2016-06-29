@@ -24,8 +24,9 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public boolean createProduct(Product product) {
+		Session session = null;
 		try {
-			Session session = MyHibernateSessionFactory.getSessionFactory()
+			session = MyHibernateSessionFactory.getSessionFactory()
 					.getCurrentSession();
 			// 开始事务
 			tx = session.beginTransaction();

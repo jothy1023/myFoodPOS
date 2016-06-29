@@ -22,7 +22,10 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public boolean createProduct(Product product) {
-		return this.productdao.createProduct(product);
+		boolean flag = this.productdao.createProduct(product);
+//		Product pro = this.productdao.getProductById(product.getId());
+//		System.out.println("b - " +pro.getType().getTname());
+		return flag;
 	}
 
 	@Override

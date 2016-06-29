@@ -49,7 +49,7 @@
 		<tbody>
 			<s:iterator value="#session.products" var="product">
 				<tr>
-					<td><s:property value="#product.pid" /></td>
+					<td><s:property value="#product.id" /></td>
 					<td><s:property value="#product.pname" /></td>
 					<td><s:property value="#product.type.tid" /></td>
 					<td><s:property value="#product.price" /></td>

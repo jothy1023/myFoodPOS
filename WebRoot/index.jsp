@@ -75,13 +75,13 @@
 				</div>
 				<div class="col-lg-9 tab-content">
 					<div style="background-color: #F3F3F3">
-						<iframe src="product/getAllProducts.action"></iframe>
+						<iframe src="product/getAllProducts.action" style="width: 100%; height: 195px; background: #f3f3f3;border: 1px solid #f3f3f3;"></iframe>
 					</div>
 					<div class="tab-content" style="background-color: #F3F3F3">
 					
 					<!-- 功能框 -->
 					<div class="tab-content">
-						<iframe class="type_iframe" src="product/create_product.jsp"
+						<iframe class="type_iframe product_iframe" src="product/create_product.jsp"
 							frameborder="0" scrolling="no"
 							style="width: 100%; height: 320px; background: #f3f3f3; margin-top:30px;"></iframe>
 					</div>
