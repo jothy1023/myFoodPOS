@@ -6,6 +6,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<img alt="404 Not Found" src="../img/404.jpg" style="width:100%; height:195px;">
+	数据库中暂无数据哦，请尽快添加！
 </body>
 </html>

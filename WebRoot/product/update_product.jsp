@@ -40,11 +40,11 @@
 			action="<%=path%>/product/updateProduct.action" method="post">
 			<div class="form-group">
 				<div>
-					<label>请选择要修改的类型编号：</label> 
-					<select class="form-control" name="tid">
+					<label>请选择要修改的类型编号：</label> <select class="form-control proSelect" name="tid">
 						<s:iterator value="#session.products" var="product">
-							<option name="pid" tname='<s:property value="#product.pname"/>'><s:property
-									value="#product.pid" /></option>
+							<option name="id" pname='<s:property value="#product.pname" />' price='<s:property value="#product.price" />' >
+								<s:property value="#product.id" />
+							</option>
 						</s:iterator>
 					</select>
 				</div>
@@ -54,23 +54,21 @@
 				</div>
 
 				<div>
-					<label>产品类别：</label> <select class="form-control">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
+					<label>产品类别：</label> <select class="form-control" name="type.tid">
+						<s:iterator value="#session.types" var="type">
+							<option value="<s:property value='#type.tid' />"><s:property value="#type.tname" /></option>
+						</s:iterator>
 					</select>
 				</div>
-				<div class="form-group">
+				<div>
 					<label for="updateProductPrice">产品价格</label> <input type="text"
 						id="updateProductPrice" class="form-control" placeholder="名称" />
 				</div>
 				<div>
 					<label>产品规格：</label> <select class="form-control">
-						<option></option>
-						<option>大</option>
-						<option>中</option>
-						<option>小</option>
+						<option value="1">大</option>
+						<option value="2">中</option>
+						<option value="3">小</option>
 					</select>
 				</div>
 			</div>
@@ -78,13 +76,15 @@
 		</form>
 	</div>
 	<script>
-		var select = $('select');
+		var select = $('.proSelect');
 		var inputName = $('#updateProductName');
+		var inputPrice = $('#updateProductPrice');
 		select.change(function() {
-			inputName.attr('value', $(this).find("option:selected").attr(
-					'pname'));
+			var selOpt = $(this).find("option:selected");
+			inputName.attr('value', selOpt.attr('pname'));
+			inputPrice.attr('value', selOpt.attr('price'));
 		});
-		$('select').trigger('change');
+		$('.proSelect').trigger('change');
 	</script>
 </body>
 </html>

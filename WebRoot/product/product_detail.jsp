@@ -41,7 +41,7 @@
 				<p>
 					修改/删除产品如下：<br />
 				</p>
-				<label>产品类别编号: <s:property value="pid" /></label><br /> <label>产品类别名称:
+				<label>产品类别编号: <s:property value="id" /></label><br /> <label>产品类别名称:
 					<s:property value="pname" />
 				</label>
 			</div>

@@ -27,7 +27,7 @@ public class ProductDAOImpl implements ProductDAO {
 		Session session = null;
 		try {
 			session = MyHibernateSessionFactory.getSessionFactory()
-					.getCurrentSession();
+					.openSession();
 			// 开始事务
 			tx = session.beginTransaction();
 			session.save(product);

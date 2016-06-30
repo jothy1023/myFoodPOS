@@ -1,5 +1,7 @@
 package service.impl;
 
+import java.util.List;
+
 import dao.IOrderDAO;
 import dao.impl.OrderDAOImpl;
 import entity.Orderitem;
@@ -18,6 +20,12 @@ public class OrderServiceImpl implements IOrderService {
 	//保存订单
 	public Orders saveOrder(Orders order) {
 		return orderDAO.saveOrder(order);
+	}
+
+	@Override
+	public List<Orders> getAllOrders() {
+		// TODO Auto-generated method stub
+		return this.orderDAO.getAllOrders();
 	}
 
 

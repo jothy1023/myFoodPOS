@@ -37,14 +37,14 @@
 <body>
 	<div id="deleteProduct" class="tab-pane fade in active">
 		<form role="form" name="deleteForm"
-			action="<%=path%>/type/deleteProductById.action" method="post"
+			action="<%=path%>/product/deleteProductById.action" method="post"
 			onsubmit="return confirm('你确定要删除吗？')">
 			<div class="form-group">
 				<div>
-					<label>请选择要删除的产品编号：</label> <select class="form-control" name="tid">
+					<label>请选择要删除的产品编号：</label> <select class="form-control" name="id">
 						<s:iterator value="#session.products" var="product">
-							<option name="pid" tname='<s:property value="#product.pname"/>'><s:property
-									value="#product.pid" /></option>
+							<option name="id" pname='<s:property value="#product.pname"/>'><s:property
+									value="#product.id" /></option>
 						</s:iterator>
 					</select>
 				</div>

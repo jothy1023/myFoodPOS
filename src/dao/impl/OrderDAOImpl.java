@@ -1,7 +1,12 @@
 package dao.impl;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+
 
 
 import dao.IOrderDAO;
@@ -19,6 +24,22 @@ public class OrderDAOImpl implements IOrderDAO {
 		session.save(order);
 		tx.commit();
 		return order;
+	}
+
+	@Override
+	public List<Orders> getAllOrders() {
+		Session session = MyHibernateSessionFactory.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		String hql = "from Orders where 1=1";
+		Query query = session.createQuery(hql);
+		List<Orders> orders = query.list();
+		if(orders == null) {
+			return null;
+		}
+		for(int i = 0; i < orders.size(); i++) {
+			System.out.println(orders.get(i));
+		}
+		return orders;
 	}
 
 }

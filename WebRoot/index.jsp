@@ -32,6 +32,7 @@
 <body>
 
 	<div class="container">
+		<a href="chart/showChart.action">chart</a>
 		<div class="header">
 			<ul id="myTab" class="nav nav-pills pull-right">
 				<li class="active"><a href="#manageType" data-toggle="tab">产品类别管理</a></li>
@@ -81,9 +82,9 @@
 					
 					<!-- 功能框 -->
 					<div class="tab-content">
-						<iframe class="type_iframe product_iframe" src="product/create_product.jsp"
+						<iframe class="type_iframe product_iframe" src=""
 							frameborder="0" scrolling="no"
-							style="width: 100%; height: 320px; background: #f3f3f3; margin-top:30px;"></iframe>
+							style="width: 100%; height: 345px; background: #f3f3f3; margin-top:30px;"></iframe>
 					</div>
 						<div id="searchItem" class="tab-pane fade">
 							<form role="form">

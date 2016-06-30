@@ -14,6 +14,7 @@ import entity.Type;
 
 public class TypeDAOImpl implements TypeDAO {
 
+	private Session session;
 	private Transaction tx = null;
 	private String hql = "";
 

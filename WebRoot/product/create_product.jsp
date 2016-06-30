@@ -1,12 +1,13 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ page import="java.text.SimpleDateFormat"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	Date date = new Date();
-	String time = "111";
+	String time = new SimpleDateFormat("yyyy-MM-dd").format(date);;
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -46,7 +47,7 @@
 			<div>
 				<label>产品类别：</label> <select class="form-control" name="type.tid">
 					<s:iterator value="#session.types" var="type">
-						<option value="<s:property value="#type.tid" />"><s:property value="#type.tid" /></option>
+						<option value="<s:property value="#type.tid" />"><s:property value="#type.tname" /></option>
 					</s:iterator>
 				</select>
 			</div>

@@ -18,7 +18,7 @@ public class Product implements java.io.Serializable {
 	private String pname;
 	private String psize;
 	private Integer idx;
-	private Set orderitems = new HashSet(0);
+	private Set<Orderitem> orderitems = new HashSet<Orderitem>(0);
 
 	// Constructors
 
@@ -106,11 +106,11 @@ public class Product implements java.io.Serializable {
 		this.idx = idx;
 	}
 
-	public Set getOrderitems() {
+	public Set<Orderitem> getOrderitems() {
 		return this.orderitems;
 	}
 
-	public void setOrderitems(Set orderitems) {
+	public void setOrderitems(Set<Orderitem> orderitems) {
 		this.orderitems = orderitems;
 	}
 

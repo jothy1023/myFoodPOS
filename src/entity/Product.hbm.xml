@@ -30,7 +30,7 @@
         </property>
         <set name="orderitems" inverse="true">
             <key>
-                <column name="productId" not-null="true" />
+                <column name="orderItemId" not-null="false" />
             </key>
             <one-to-many class="entity.Orderitem" />
         </set>
