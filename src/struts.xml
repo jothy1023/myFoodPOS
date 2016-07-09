@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.4.dtd">
+
+<struts>
+
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="logout" class="action.LoginAction" method="logout">
+			<result name="success">/admin/login.jsp</result>
+			<result name="error">/admin/login.jsp</result>
+		</action>
+	</package>
+	
+	<package name="type" namespace="/type" extends="default">
+		<action name="createType" class="action.TypeAction" method="createType">
+			<!-- 配置视图页面 -->
+			<result name="success">/type/type_detail.jsp</result>
+			<result name="fail">/error.jsp</result>
+		</action>
+		<action name="updateType" class="action.TypeAction" method="updateType">
+			<!-- 配置视图页面 -->
+			<result name="success">/type/type_detail.jsp</result>
+			<result name="fail">/error.jsp</result>
+		</action>
+		<action name="getTypeById" class="action.TypeAction" method="getTypeById">
+			<!-- 配置视图页面 -->
+			<result name="success">/type/update_type.jsp</result>
+			<result name="fail">/error.jsp</result>
+		</action>
+		<action name="getAllTypes" class="action.TypeAction" method="getAllTypes">
+			<!-- 配置视图页面 -->
+			<result name="success">/type/type_list.jsp</result>
+			<result name="fail">/nulldata.jsp</result>
+		</action>
+		<action name="deleteTypeById" class="action.TypeAction" method="deleteTypeById">
+			<!-- 配置视图页面 -->
+			<result name="success">/type/type_detail.jsp</result>
+			<result name="fail">/error.jsp</result>
+		</action>
+
+	</package>
+
+	<package name="product" namespace="/product" extends="default">
+		<action name="createProduct" class="action.ProductAction"
+			method="createProduct">
+			<!-- 配置视图页面 -->
+			<result name="success">/product/product_detail.jsp</result>
+			<result name="fail">/error.jsp</result>
+		</action>
+		<action name="updateProduct" class="action.ProductAction"
+			method="updateProduct">
+			<!-- 配置视图页面 -->
+			<result name="success">/product/product_detail.jsp</result>
+			<result name="fail">/error.jsp</result>
+		</action>
+		<action name="getProductById" class="action.ProductAction"
+			method="getProductById">
+			<!-- 配置视图页面 -->
+			<result name="success">/product/update_product.jsp</result>
+			<result name="fail">/error.jsp</result>
+		</action>
+		<action name="getAllProducts" class="action.ProductAction"
+			method="getAllProducts">
+			<!-- 配置视图页面 -->
+			<result name="success">/product/product_list.jsp</result>
+			<result name="fail">/nulldata.jsp</result>
+		</action>
+
+		<action name="deleteProductById" class="action.ProductAction"
+			method="deleteProductById">
+			<!-- 配置视图页面 -->
+			<result name="success">/product/product_detail.jsp</result>
+			<result name="fail">/error.jsp</result>
+		</action>
+	</package>
+
+	
+	<package name="user" namespace="/user" extends="default">
+		<action name="getAllUsers" class="action.UserAction" method="getAllUsers">
+			<result name="success">/user/user_list.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="addUser" class="action.UserAction" method="addUser">
+			<result name="success">/user/user_index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="deleteUser" class="action.UserAction" method="deleteUser">
+			<result name="success">/user/user_index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="updateUser" class="action.UserAction" method="updateUser">
+			<result name="success" type="redirect">/user/user_index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+	</package>
+
+	<package name="system" namespace="/system" extends="struts-default">
+		<action name="login" class="action.LoginAction">
+			<result name="success">/system/index.jsp</result>
+			<result name="error">/system/login.jsp</result>
+		</action>
+		<action name="logout" class="action.LoginAction">
+			<result name="success">/system/login.jsp</result>
+			<result name="error">/system/login.jsp</result>
+		</action>
+		<action name="getProductsByType" class="action.ProductAction"
+			method="getProductsByType">
+			<!-- 配置视图页面 -->
+			<result name="success">/system/menu.jsp</result>
+			<result name="fail">/nulldata.jsp</result>
+		</action>
+		<action name="addToCart" class="action.ShoppingAction" method="addToCart">
+			<result name="success">/system/index.jsp</result>
+		</action>
+		<action name="checkout" class="action.ShoppingAction" method="checkout">
+			<result name="success">/system/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="deleteQuantity" class="action.ShoppingAction"
+			method="deleteQuantity">
+			<result name="success">/system/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="deleteItem" class="action.ShoppingAction" method="deleteItem">
+			<result name="success">/system/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<action name="makeAliPay" class="action.ShoppingAction" method="makeAliPayment">
+			<result name="success">/system/payment_success.jsp</result>
+			<result name="error">/system/index.jsp</result>
+		</action>
+		<action name="makeCashPay" class="action.ShoppingAction"
+			method="makeCashPayment">
+			<result name="success">/system/payment_success.jsp</result>
+			<result name="error">/system/index.jsp</result>
+		</action>
+
+	</package>
+
+	<package namespace="/order" name="order" extends="default">
+		<action name="getAllOrders" class="action.OrderAction" method="getAllOrders">
+			<result name="success">/order/orders_list.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="deleteOrder" class="action.OrderAction" method="deleteOrder">
+			<result name="success">/order/order_index.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+	</package>
+	<package namespace="/admin" name="admin" extends="default">
+		<action name="adminLogin" class="action.ChartAction">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		
+	</package>
+	<package namespace="/chart" name="chart" extends="default">
+		<action name="showChart" class="action.ChartAction" method="getData">
+			<result name="success">/system/showChart.jsp</result>
+			<result name="fail">/nulldata.jsp</result>
+		</action>
+	</package>
+
+</struts>

@@ -1,0 +1,48 @@
+.header{
+	height:42px;
+}
+#manageType,#manageItem,#manageUser{
+	height:570px;
+	border:1px solid #ccc;
+	padding:15px 0 15px 0;
+}
+#manageItem .operation_panel,#manageType .operation_panel,#manageUser .operation_panel{
+	border-top:1px solid #ccc;
+	padding:12px;
+	margin-top:20px;
+}
+#addUser{
+	margin-top:20px;
+}
+#addUser .form-group{
+	height:34px;
+	line-height:34px;
+}
+#addUser .form-group label{
+	font-weight:normal;
+}
+#addUser .form-group input{
+	display:inline;
+	width:60%;
+	float:right
+}
+#addUser button,#addProduct button{
+	width:80%;
+	float:right;
+	margin-top:10px;
+	margin-right:10%;
+}
+.detail_list{
+	height:500px;
+	background:#f3f3f3;
+}
+.tab-pane{
+	display:none;
+}
+.show{
+	display:block;
+}
+#mainFrame label{
+	font-weight:normal;
+}
+

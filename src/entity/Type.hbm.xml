@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- 实体映射文件 -->
+<hibernate-mapping>
+	<!-- 动态局部更新 -->
+   <class name="entity.Type" table="TYPE" dynamic-update="true" lazy="false">
+      <!-- 主键 -->
+      <id name="tid" type="int">
+      	<!--自动增长类型-->
+         <generator class="native" />
+      </id>
+      <property name="tname" type="java.lang.String" />
+      <list name="products">
+      	<key column="tid" /><!-- 指明表中外键 -->
+      	<list-index></list-index>
+      	<one-to-many class="entity.Product" /><!-- 指明映射类 -->
+      </list>
+   </class>
+</hibernate-mapping>
